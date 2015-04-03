@@ -64,7 +64,8 @@ module.exports = (env) ->
         return results[0]
       ).catch( (error) =>
         env.logger.error(error.message)
-        env.logger.debug(error) 
+        env.logger.debug(error)
+        throw error
       )
       
     getTemperature: -> @_currentRequest.then( (result) => Number result.current.temperature )
@@ -117,7 +118,8 @@ module.exports = (env) ->
         return results[0]
       ).catch( (error) =>
         env.logger.error(error.message)
-        env.logger.debug(error) 
+        env.logger.debug(error)
+        throw error
       )
 
     getLow: -> @_currentRequest.then( (result) => Number result.forecast[@day].low )
